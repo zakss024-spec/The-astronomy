@@ -1,0 +1,37 @@
+const qs=s=>document.querySelector(s);
+function meteor(){
+  const m=document.createElement('div');m.className='meteor';
+  const startX=Math.random()*120+15,startY=Math.random()*45-5;
+  const distance=260+Math.random()*300;
+  const duration=.75+Math.random()*1.1;
+  m.style.left=startX+'vw';m.style.top=startY+'vh';m.style.animationDuration=duration+'s';
+  m.style.setProperty('--mx',(-distance)+'px');m.style.setProperty('--my',distance+'px');
+  document.body.appendChild(m);setTimeout(()=>m.remove(),(duration+0.3)*1000);
+}
+function meteorBurst(){if(!document.hidden){meteor();if(Math.random()<.22)setTimeout(meteor,180)}}
+setInterval(meteorBurst,1200);
+setTimeout(()=>qs('#loader')?.classList.add('hide'),1250);
+document.addEventListener('click',e=>{if(e.target.matches('.maker'))qs('#egg')?.classList.add('show');if(e.target.matches('[data-close]'))qs('#egg')?.classList.remove('show')});
+const questions=[
+['Planet terbesar di Tata Surya adalah?',['Bumi','Mars','Jupiter','Venus'],2,'Jupiter adalah planet terbesar di Tata Surya. Diameternya sekitar 11 kali diameter Bumi dan massanya lebih dari dua kali gabungan seluruh planet lainnya.'],
+['Galaksi tempat Tata Surya berada disebut?',['Andromeda','Bima Sakti','Sombrero','Triangulum'],1,'Tata Surya berada di Galaksi Bima Sakti. Matahari terletak di salah satu lengan spiral galaksi, sekitar puluhan ribu tahun cahaya dari pusatnya.'],
+['Satelit alami Bumi adalah?',['Titan','Europa','Bulan','Phobos'],2,'Bulan adalah satelit alami Bumi. Gravitasi Bulan membantu menghasilkan pasang-surut laut dan siklus fasenya terjadi karena posisi relatif Bulan, Bumi, dan Matahari.'],
+['Bintang yang menjadi pusat Tata Surya adalah?',['Sirius','Matahari','Betelgeuse','Proxima Centauri'],1,'Matahari adalah bintang pusat Tata Surya. Energinya berasal dari fusi nuklir hidrogen menjadi helium di inti Matahari.'],
+['Planet yang terkenal dengan cincin paling mencolok adalah?',['Saturnus','Merkurius','Neptunus','Mars'],0,'Saturnus memiliki sistem cincin yang sangat terang dan luas. Cincin tersebut tersusun terutama dari partikel es, batuan, dan debu dengan ukuran beragam.'],
+['Planet terdekat dengan Matahari adalah?',['Venus','Bumi','Merkurius','Mars'],2,'Merkurius adalah planet terdekat dengan Matahari. Karena atmosfernya sangat tipis, perubahan suhu antara siang dan malam sangat ekstrem.'],
+['Planet yang dikenal sebagai Planet Merah adalah?',['Mars','Jupiter','Uranus','Venus'],0,'Mars tampak kemerahan karena permukaannya kaya mineral besi yang mengalami oksidasi. Mars juga memiliki gunung berapi dan lembah raksasa.'],
+['Apa yang dimaksud tahun cahaya?',['Satuan waktu','Satuan jarak','Satuan massa','Satuan suhu'],1,'Tahun cahaya adalah satuan jarak, bukan waktu. Ini adalah jarak yang ditempuh cahaya dalam ruang hampa selama satu tahun, sekitar 9,46 triliun kilometer.'],
+['Lapisan Matahari yang terlihat sebagai permukaan terang disebut?',['Korona','Fotosfer','Inti','Kromosfer'],1,'Fotosfer adalah lapisan Matahari yang tampak seperti permukaan. Sebagian besar cahaya tampak yang kita terima berasal dari wilayah ini.'],
+['Ledakan dahsyat pada akhir kehidupan beberapa bintang disebut?',['Gerhana','Supernova','Transit','Aurora'],1,'Supernova adalah ledakan bintang yang sangat energik. Peristiwa ini dapat menyebarkan unsur-unsur berat ke ruang antarbintang dan memengaruhi lingkungan galaksi.'],
+['Objek yang gravitasinya begitu kuat sehingga cahaya tidak dapat lolos dari horizon peristiwanya disebut?',['Nebula','Komet','Lubang hitam','Asteroid'],2,'Lubang hitam adalah wilayah ruang-waktu dengan gravitasi ekstrem. Batas yang disebut horizon peristiwa menandai wilayah yang tidak dapat dilalui kembali oleh cahaya setelah melewatinya.'],
+['Awan gas dan debu antarbintang disebut?',['Nebula','Orbit','Meteor','Quasar'],0,'Nebula adalah kumpulan gas dan debu di ruang antarbintang. Sebagian nebula menjadi tempat kelahiran bintang, sedangkan lainnya merupakan sisa dari bintang yang telah berevolusi.'],
+['Benda langit berbatu yang banyak ditemukan di sabuk antara Mars dan Jupiter disebut?',['Asteroid','Komet','Bintang','Pulsar'],0,'Asteroid adalah benda kecil berbatu atau logam yang mengorbit Matahari. Banyak asteroid berada di sabuk asteroid utama antara orbit Mars dan Jupiter.'],
+['Ekor komet biasanya menjadi lebih jelas ketika komet mendekati?',['Bulan','Matahari','Jupiter','Bumi'],1,'Ketika mendekati Matahari, es pada inti komet memanas dan melepaskan gas serta debu. Tekanan radiasi dan angin Matahari membantu membentuk ekor yang menjauhi Matahari.'],
+['Planet dengan suhu permukaan rata-rata tertinggi adalah?',['Merkurius','Venus','Mars','Jupiter'],1,'Venus memiliki suhu permukaan rata-rata tertinggi karena atmosfernya sangat tebal dan kaya karbon dioksida. Efek rumah kaca yang kuat memerangkap panas.'],
+['Apa penyebab utama pergantian siang dan malam di Bumi?',['Revolusi Bumi','Rotasi Bumi','Fase Bulan','Gerhana'],1,'Siang dan malam terjadi karena Bumi berotasi pada porosnya. Satu kali rotasi relatif terhadap Matahari menghasilkan siklus siang-malam sekitar 24 jam.'],
+['Planet yang memiliki kemiringan sumbu ekstrem sehingga tampak seperti menggelinding adalah?',['Uranus','Neptunus','Saturnus','Venus'],0,'Uranus memiliki kemiringan sumbu sekitar 98 derajat. Akibatnya, perubahan musim di Uranus sangat ekstrem dan berlangsung dalam periode orbitnya yang panjang.'],
+['Sistem yang terdiri dari Matahari dan semua benda yang mengorbitnya disebut?',['Galaksi','Tata Surya','Konstelasi','Nebula'],1,'Tata Surya terdiri dari Matahari dan berbagai benda yang terikat gravitasi dengannya, termasuk planet, planet katai, asteroid, komet, dan objek kecil lainnya.'],
+['Galaksi Andromeda termasuk jenis galaksi?',['Spiral','Elips','Tidak beraturan','Cincin'],0,'Andromeda adalah galaksi spiral besar yang merupakan salah satu galaksi utama di lingkungan kosmik dekat Bima Sakti. Galaksi ini berjarak sekitar 2,5 juta tahun cahaya.'],
+['Alat yang digunakan astronom untuk mengumpulkan dan mengamati cahaya dari objek jauh disebut?',['Seismograf','Teleskop','Barometer','Mikroskop'],1,'Teleskop mengumpulkan dan memfokuskan cahaya atau radiasi dari objek langit yang jauh. Teleskop modern dapat mengamati bukan hanya cahaya tampak, tetapi juga gelombang radio, inframerah, ultraviolet, dan sinar-X.']
+];
+function buildQuiz(){const root=qs('#quiz');if(!root)return;root.innerHTML=questions.map((q,i)=>`<div class="q"><b>${i+1}. ${q[0]}</b>${q[1].map((a,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${a}</label>`).join('')}</div>`).join('')+`<button class="btn" id="check">Cek Jawaban</button><div id="score" class="result"></div>`;qs('#check').onclick=grade}function grade(){let correct=0;const out=qs('#score');out.innerHTML='';questions.forEach((q,i)=>{const picked=document.querySelector(`input[name=q${i}]:checked`);const val=picked?Number(picked.value):-1;const ok=val===q[2];if(ok)correct++;const box=document.createElement('div');box.className='result-item '+(ok?'correct':'wrong');box.innerHTML=`<b>Soal ${i+1} — ${ok?'BENAR':'SALAH'}</b><p class="small">Jawaban kamu: <b>${val>=0?q[1][val]:'Belum dijawab'}</b><br>Jawaban benar: <b>${q[1][q[2]]}</b></p><p>${q[3]}</p>`;out.appendChild(box)});const head=document.createElement('div');head.className='card';head.innerHTML=`<h2>Skor: ${correct}/20 — ${Math.round(correct/20*100)}</h2><p class="muted">Benar: ${correct} • Salah: ${20-correct}</p>`;out.prepend(head);window.scrollTo({top:out.offsetTop-80,behavior:'smooth'})}buildQuiz();
